@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,7 +59,7 @@
             background: white;
             border-radius: 8px;
             padding: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s;
         }
 
@@ -103,7 +104,7 @@
             background: white;
             border-radius: 8px;
             padding: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .bundle-header {
@@ -185,7 +186,7 @@
             border-radius: 8px;
             padding: 1.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .progress-stats {
@@ -239,7 +240,7 @@
             background: white;
             border-radius: 8px;
             padding: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .bundle-progress-header {
@@ -300,30 +301,30 @@
             min-height: 100vh;
             background: #f5f5f5;
         }
-        
+
         #app {
             min-height: 100vh;
             background: #f5f5f5;
         }
-        
+
         header {
             background: linear-gradient(135deg, #4CAF50, #45a049);
             color: white;
             text-align: center;
             padding: 2rem 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
+
         header h1 {
             margin: 0;
             font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
         }
-        
+
         .junimo-icon {
             width: 48px;
             height: 48px;
@@ -333,23 +334,23 @@
             border-radius: 50%;
             padding: 4px;
             /* Add a subtle shadow for depth */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
+
         header p {
             margin: 0.5rem 0 0 0;
             opacity: 0.9;
             font-size: 1.1rem;
         }
-        
+
         nav {
             background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 0;
             display: flex;
             justify-content: center;
         }
-        
+
         .tab-button {
             background: none;
             border: none;
@@ -360,32 +361,32 @@
             transition: all 0.3s ease;
             color: #666;
         }
-        
+
         .tab-button:hover {
             background: #f5f5f5;
             color: #333;
         }
-        
+
         .tab-button.active {
             color: #4CAF50;
             border-bottom-color: #4CAF50;
             background: #f9f9f9;
         }
-        
+
         main {
             width: 100%;
             max-width: none;
             margin: 0;
             padding: 2rem;
         }
-        
+
         .loading {
             text-align: center;
             padding: 3rem;
             color: #666;
             font-size: 1.1rem;
         }
-        
+
         .error-message {
             background: #ffebee;
             color: #c62828;
@@ -394,67 +395,72 @@
             margin: 1rem 0;
             border-left: 4px solid #c62828;
         }
-        
+
         /* Enhanced bundle cards */
         .bundle-card {
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        
+
         .bundle-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
-        
+
         /* Progress bars */
         .bundle-progress-fill,
         .overall-progress-fill {
             background: linear-gradient(90deg, #4CAF50, #45a049);
         }
-        
+
         /* Enhanced grid layouts - Force override */
         .items-grid {
             display: grid !important;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
             gap: 1rem !important;
-            border: 2px solid red; /* Debug border */
+            border: 2px solid red;
+            /* Debug border */
         }
-        
+
         .bundles-container {
             display: grid !important;
             grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)) !important;
             gap: 1.5rem !important;
-            border: 2px solid blue; /* Debug border */
+            border: 2px solid blue;
+            /* Debug border */
         }
-        
-        .item-card, .bundle-card {
-            border: 1px solid green !important; /* Debug border for cards */
+
+        .item-card,
+        .bundle-card {
+            border: 1px solid green !important;
+            /* Debug border for cards */
         }
-        
+
         /* Responsive design */
         @media (max-width: 480px) {
             header h1 {
                 font-size: 2rem;
             }
-            
+
             main {
                 padding: 1rem;
             }
-            
+
             .tab-button {
                 padding: 0.75rem 1rem;
                 font-size: 0.9rem;
             }
-            
+
             .bundles-container {
                 grid-template-columns: 1fr;
             }
-            
+
             .items-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
     <div id="app">
         <header>
@@ -498,4 +504,5 @@
     <script src="/static/scripts/web-api.js"></script>
     <script src="/static/scripts/main.js"></script>
 </body>
+
 </html>
