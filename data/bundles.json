@@ -1,0 +1,590 @@
+[
+  {
+    "id": 1,
+    "name": "Spring Foraging Bundle",
+    "room": "Crafts Room",
+    "reward": "30 Spring Seeds",
+    "items": [
+      {
+        "item_id": 61,
+        "quantity": 1
+      },
+      {
+        "item_id": 62,
+        "quantity": 1
+      },
+      {
+        "item_id": 63,
+        "quantity": 1
+      },
+      {
+        "item_id": 64,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Summer Foraging Bundle",
+    "room": "Crafts Room",
+    "reward": "30 Summer Seeds",
+    "items": [
+      {
+        "item_id": 65,
+        "quantity": 1
+      },
+      {
+        "item_id": 66,
+        "quantity": 1
+      },
+      {
+        "item_id": 67,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Fall Foraging Bundle",
+    "room": "Crafts Room",
+    "reward": "30 Fall Seeds",
+    "items": [
+      {
+        "item_id": 68,
+        "quantity": 1
+      },
+      {
+        "item_id": 69,
+        "quantity": 1
+      },
+      {
+        "item_id": 70,
+        "quantity": 1
+      },
+      {
+        "item_id": 71,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Winter Foraging Bundle",
+    "room": "Crafts Room",
+    "reward": "30 Winter Seeds",
+    "items": [
+      {
+        "item_id": 72,
+        "quantity": 1
+      },
+      {
+        "item_id": 73,
+        "quantity": 1
+      },
+      {
+        "item_id": 74,
+        "quantity": 1
+      },
+      {
+        "item_id": 75,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Construction Bundle",
+    "room": "Crafts Room",
+    "reward": "Charcoal Kiln",
+    "items": [
+      {
+        "item_id": 388,
+        "quantity": 99
+      },
+      {
+        "item_id": 390,
+        "quantity": 99
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Exotic Foraging Bundle",
+    "room": "Crafts Room",
+    "reward": "Autumn's Bounty Recipe",
+    "items": [
+      {
+        "item_id": 88,
+        "quantity": 1
+      },
+      {
+        "item_id": 90,
+        "quantity": 1
+      },
+      {
+        "item_id": 78,
+        "quantity": 1
+      },
+      {
+        "item_id": 259,
+        "quantity": 1
+      },
+      {
+        "item_id": 420,
+        "quantity": 1
+      },
+      {
+        "item_id": 422,
+        "quantity": 1
+      },
+      {
+        "item_id": 281,
+        "quantity": 1
+      },
+      {
+        "item_id": 283,
+        "quantity": 1
+      },
+      {
+        "item_id": 372,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Spring Crops Bundle",
+    "room": "Pantry",
+    "reward": "20 Speed-Gro",
+    "items": [
+      {
+        "item_id": 1,
+        "quantity": 1
+      },
+      {
+        "item_id": 2,
+        "quantity": 1
+      },
+      {
+        "item_id": 3,
+        "quantity": 1
+      },
+      {
+        "item_id": 4,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Summer Crops Bundle",
+    "room": "Pantry",
+    "reward": "Quality Sprinkler",
+    "items": [
+      {
+        "item_id": 256,
+        "quantity": 1
+      },
+      {
+        "item_id": 260,
+        "quantity": 1
+      },
+      {
+        "item_id": 258,
+        "quantity": 1
+      },
+      {
+        "item_id": 254,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Fall Crops Bundle",
+    "room": "Pantry",
+    "reward": "Bee House",
+    "items": [
+      {
+        "item_id": 270,
+        "quantity": 1
+      },
+      {
+        "item_id": 272,
+        "quantity": 1
+      },
+      {
+        "item_id": 276,
+        "quantity": 1
+      },
+      {
+        "item_id": 284,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Quality Crops Bundle",
+    "room": "Pantry",
+    "reward": "Preserves Jar",
+    "items": [
+      {
+        "item_id": 1,
+        "quantity": 5,
+        "quality": "Gold"
+      },
+      {
+        "item_id": 254,
+        "quantity": 5,
+        "quality": "Gold"
+      },
+      {
+        "item_id": 276,
+        "quantity": 5,
+        "quality": "Gold"
+      },
+      {
+        "item_id": 270,
+        "quantity": 5,
+        "quality": "Gold"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Animal Bundle",
+    "room": "Pantry",
+    "reward": "Cheese Press",
+    "items": [
+      {
+        "item_id": 101,
+        "quantity": 1
+      },
+      {
+        "item_id": 174,
+        "quantity": 1
+      },
+      {
+        "item_id": 99,
+        "quantity": 1
+      },
+      {
+        "item_id": 102,
+        "quantity": 1
+      },
+      {
+        "item_id": 104,
+        "quantity": 1
+      },
+      {
+        "item_id": 105,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Artisan Bundle",
+    "room": "Pantry",
+    "reward": "Keg",
+    "items": [
+      {
+        "item_id": 459,
+        "quantity": 1
+      },
+      {
+        "item_id": 426,
+        "quantity": 1
+      },
+      {
+        "item_id": 424,
+        "quantity": 1
+      },
+      {
+        "item_id": 340,
+        "quantity": 1
+      },
+      {
+        "item_id": 344,
+        "quantity": 1
+      },
+      {
+        "item_id": 613,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "River Fish Bundle",
+    "room": "Fish Tank",
+    "reward": "Bait (30)",
+    "items": [
+      {
+        "item_id": 145,
+        "quantity": 1
+      },
+      {
+        "item_id": 143,
+        "quantity": 1
+      },
+      {
+        "item_id": 706,
+        "quantity": 1
+      },
+      {
+        "item_id": 702,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Lake Fish Bundle",
+    "room": "Fish Tank",
+    "reward": "Dressed Spinner",
+    "items": [
+      {
+        "item_id": 136,
+        "quantity": 1
+      },
+      {
+        "item_id": 142,
+        "quantity": 1
+      },
+      {
+        "item_id": 700,
+        "quantity": 1
+      },
+      {
+        "item_id": 698,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Ocean Fish Bundle",
+    "room": "Fish Tank",
+    "reward": "Warp Totem: Beach (5)",
+    "items": [
+      {
+        "item_id": 37,
+        "quantity": 1
+      },
+      {
+        "item_id": 36,
+        "quantity": 1
+      },
+      {
+        "item_id": 53,
+        "quantity": 1
+      },
+      {
+        "item_id": 701,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Blacksmith's Bundle",
+    "room": "Boiler Room",
+    "reward": "Furnace",
+    "items": [
+      {
+        "item_id": 334,
+        "quantity": 1
+      },
+      {
+        "item_id": 335,
+        "quantity": 1
+      },
+      {
+        "item_id": 336,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Geologist's Bundle",
+    "room": "Boiler Room",
+    "reward": "Omni Geode (5)",
+    "items": [
+      {
+        "item_id": 84,
+        "quantity": 1
+      },
+      {
+        "item_id": 85,
+        "quantity": 1
+      },
+      {
+        "item_id": 86,
+        "quantity": 1
+      },
+      {
+        "item_id": 87,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Adventurer's Bundle",
+    "room": "Boiler Room",
+    "reward": "Small Magnet Ring",
+    "items": [
+      {
+        "item_id": 766,
+        "quantity": 99
+      },
+      {
+        "item_id": 767,
+        "quantity": 10
+      },
+      {
+        "item_id": 684,
+        "quantity": 1
+      },
+      {
+        "item_id": 709,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Chef's Bundle",
+    "room": "Bulletin Board",
+    "reward": "Pink Cake",
+    "items": [
+      {
+        "item_id": 724,
+        "quantity": 1
+      },
+      {
+        "item_id": 259,
+        "quantity": 1
+      },
+      {
+        "item_id": 430,
+        "quantity": 1
+      },
+      {
+        "item_id": 376,
+        "quantity": 1
+      },
+      {
+        "item_id": 228,
+        "quantity": 1
+      },
+      {
+        "item_id": 194,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Field Research Bundle",
+    "room": "Bulletin Board",
+    "reward": "Recycling Machine",
+    "items": [
+      {
+        "item_id": 422,
+        "quantity": 1
+      },
+      {
+        "item_id": 392,
+        "quantity": 1
+      },
+      {
+        "item_id": 702,
+        "quantity": 1
+      },
+      {
+        "item_id": 86,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Enchanter's Bundle",
+    "room": "Bulletin Board",
+    "reward": "Gold Bar (5)",
+    "items": [
+      {
+        "item_id": 725,
+        "quantity": 1
+      },
+      {
+        "item_id": 348,
+        "quantity": 1
+      },
+      {
+        "item_id": 446,
+        "quantity": 1
+      },
+      {
+        "item_id": 388,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Dye Bundle",
+    "room": "Bulletin Board",
+    "reward": "Seed Maker",
+    "items": [
+      {
+        "item_id": 420,
+        "quantity": 1
+      },
+      {
+        "item_id": 397,
+        "quantity": 1
+      },
+      {
+        "item_id": 433,
+        "quantity": 1
+      },
+      {
+        "item_id": 444,
+        "quantity": 1
+      },
+      {
+        "item_id": 62,
+        "quantity": 1
+      },
+      {
+        "item_id": 90,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Fodder Bundle",
+    "room": "Bulletin Board",
+    "reward": "Heater",
+    "items": [
+      {
+        "item_id": 262,
+        "quantity": 10
+      },
+      {
+        "item_id": 178,
+        "quantity": 10
+      },
+      {
+        "item_id": 613,
+        "quantity": 3
+      }
+    ]
+  }
+]

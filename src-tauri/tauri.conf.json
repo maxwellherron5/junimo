@@ -1,0 +1,39 @@
+{
+  "build": {
+    "beforeDevCommand": "",
+    "beforeBuildCommand": "",
+    "devPath": "../src-ui",
+    "distDir": "../src-ui"
+  },
+  "package": {
+    "productName": "Junimo",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "com.junimo.app",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png", 
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ]
+    },
+    "security": {
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'"
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "Junimo",
+        "width": 1200,
+        "height": 800,
+        "url": "index.html"
+      }
+    ]
+  }
+}
