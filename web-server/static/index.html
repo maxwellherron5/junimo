@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junimo - Stardew Valley Helper</title>
+    <link rel="icon" type="image/png" href="/assets/junimo.png">
+    <style>
+        /* Complete embedded CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        #app {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .junimo-icon {
+            width: 48px;
+            height: 48px;
+            vertical-align: middle;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            padding: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .tab-button:hover {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .tab-button.active {
+            color: #4CAF50;
+            border-bottom-color: #4CAF50;
+            background: #f9f9f9;
+        }
+
+        main {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Search */
+        .search-container {
+            margin-bottom: 2rem;
+        }
+
+        #item-search {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #4CAF50;
+            background: white;
+            color: #4CAF50;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .filter-btn.active {
+            background: #4CAF50;
+            color: white;
+        }
+
+        /* Items Grid */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .item-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .item-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .item-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .item-category {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-description {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-seasons {
+            color: #2e7d32;
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+        }
+
+        .item-location {
+            color: #1565c0;
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+        }
+
+        .item-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: #666;
+            flex-wrap: wrap;
+        }
+
+        .item-stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Bundles */
+        #bundles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .bundle-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .bundle-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .bundle-header {
+            margin-bottom: 1rem;
+        }
+
+        .bundle-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+
+        .bundle-room {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .bundle-reward {
+            color: #27ae60;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .bundle-items {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bundle-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .bundle-item:last-child {
+            border-bottom: none;
+        }
+
+        .bundle-item-info {
+            flex: 1;
+        }
+
+        .bundle-item-name {
+            font-weight: 500;
+        }
+
+        .bundle-item-quantity {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .bundle-item-checkbox {
+            margin-left: 1rem;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .bundle-item.completed {
+            opacity: 0.7;
+        }
+
+        .bundle-item.completed .bundle-item-name {
+            text-decoration: line-through;
+            color: #27ae60;
+        }
+
+        .bundle-item.completed .bundle-item-quantity {
+            color: #27ae60;
+        }
+
+        /* Villagers */
+        #villagers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .villager-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .villager-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .villager-header {
+            margin-bottom: 1rem;
+        }
+
+        .villager-name {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+
+        .villager-birthday {
+            color: #e91e63;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .villager-location {
+            color: #1565c0;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .villager-description {
+            color: #666;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            max-height: 4.2rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .gift-preferences {
+            margin-top: 1rem;
+        }
+
+        .gift-category {
+            margin-bottom: 0.75rem;
+        }
+
+        .gift-category-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .gift-category.loved .gift-category-title {
+            color: #e91e63;
+        }
+
+        .gift-category.liked .gift-category-title {
+            color: #4caf50;
+        }
+
+        .gift-category.disliked .gift-category-title {
+            color: #ff9800;
+        }
+
+        .gift-category.hated .gift-category-title {
+            color: #f44336;
+        }
+
+        .gift-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        .gift-item {
+            background: #f5f5f5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .gift-category.loved .gift-item {
+            background: #fce4ec;
+            color: #c2185b;
+        }
+
+        .gift-category.liked .gift-item {
+            background: #e8f5e8;
+            color: #388e3c;
+        }
+
+        .gift-category.disliked .gift-item {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .gift-category.hated .gift-item {
+            background: #ffebee;
+            color: #d32f2f;
+        }
+
+        /* Progress */
+        .progress-summary {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .progress-stat {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .progress-stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .progress-stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .overall-progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .overall-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            transition: width 0.3s ease;
+        }
+
+        .bundle-progress-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .bundle-progress-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .bundle-progress-header {
+            margin-bottom: 1rem;
+        }
+
+        .bundle-progress-name {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+
+        .bundle-progress-room {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .bundle-progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #ecf0f1;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .bundle-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            transition: width 0.3s ease;
+        }
+
+        .bundle-progress-stats {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #c62828;
+        }
+
+        /* Responsive design */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            .tab-button {
+                padding: 0.75rem 0.75rem;
+                font-size: 0.8rem;
+            }
+            
+            #bundles-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            #villagers-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .villager-description {
+                max-height: none;
+                overflow: visible;
+            }
+            
+            .filter-buttons {
+                justify-content: center;
+            }
+            
+            .filter-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1><img src="/assets/junimo.png" alt="Junimo" class="junimo-icon"> Junimo</h1>
+            <p>Your Stardew Valley companion for the web</p>
+        </header>
+
+        <nav>
+            <button id="items-tab" class="tab-button active">Items</button>
+            <button id="bundles-tab" class="tab-button">Bundles</button>
+            <button id="villagers-tab" class="tab-button">Villagers</button>
+            <button id="progress-tab" class="tab-button">Progress</button>
+        </nav>
+
+        <main>
+            <!-- Items Tab -->
+            <div id="items-content" class="tab-content active">
+                <div class="search-container">
+                    <input type="text" id="item-search" placeholder="Search items...">
+                    <div class="filter-buttons" style="margin-top: 1rem;">
+                        <button class="filter-btn active" data-season="all">All Seasons</button>
+                        <button class="filter-btn" data-season="Spring">🌱 Spring</button>
+                        <button class="filter-btn" data-season="Summer">☀️ Summer</button>
+                        <button class="filter-btn" data-season="Fall">🍂 Fall</button>
+                        <button class="filter-btn" data-season="Winter">❄️ Winter</button>
+                    </div>
+                </div>
+                <div id="items-grid" class="items-grid">
+                    <div class="loading">Loading items...</div>
+                </div>
+            </div>
+
+            <!-- Bundles Tab -->
+            <div id="bundles-content" class="tab-content">
+                <div id="bundles-container">
+                    <div class="loading">Loading bundles...</div>
+                </div>
+            </div>
+
+            <!-- Villagers Tab -->
+            <div id="villagers-content" class="tab-content">
+                <div id="villagers-container">
+                    <div class="loading">Loading villagers...</div>
+                </div>
+            </div>
+
+            <!-- Progress Tab -->
+            <div id="progress-content" class="tab-content">
+                <div id="progress-container">
+                    <div class="loading">Loading progress...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/web-api.js"></script>
+    <script src="/main.js"></script>
+</body>
+</html>

@@ -12,6 +12,6 @@ pub async fn init() -> Result<Database> {
 }
 
 pub async fn migrate(db: &Database) -> Result<()> {
-    sqlx::migrate!("../migrations").run(db).await?;
+    sqlx::migrate!("./migrations").run(db).await?;
     Ok(())
 }

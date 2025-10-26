@@ -1,16 +1,21 @@
 # Rust
 /target/
-src-tauri/target/
+**/target/
 **/*.rs.bk
-Cargo.lock
+**/Cargo.lock
+**/.sqlx/
 
 # Database files
 *.db
 *.db-shm
 *.db-wal
+**/*.db
+**/*.db-shm
+**/*.db-wal
 
 # Python
 __pycache__/
+**/__pycache__/
 *.py[cod]
 *$py.class
 *.so
@@ -34,6 +39,7 @@ MANIFEST
 venv/
 env/
 ENV/
+.venv/
 
 # IDE
 .vscode/
@@ -74,3 +80,61 @@ yarn-error.log*
 # Backup files
 *.bak
 *.backup
+
+# CDK and AWS
+cdk.out/
+**/cdk.out/
+*.cdk.staging/
+
+# Additional Rust artifacts
+debug/
+release/
+**/debug/
+**/release/
+deps/
+**/deps/
+
+# Additional build artifacts
+*.pdb
+*.exe
+*.dll
+*.dylib
+*.so
+
+# IDE and editor files
+*.sublime-*
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# macOS specific
+.DS_Store
+**/.DS_Store
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+
+# Linux specific
+*~
+
+# Temporary and cache files
+.cache/
+**/.cache/
+*.tmp
+*.temp
+**/*.tmp
+**/*.temp
+
+# Rust-specific ignores
+**/.rustc_info.json
+**/CACHEDIR.TAG
+
+# Lock files (generated)
+**/Cargo.lock
+
+# SQLx offline data
+.sqlx/
+**/.sqlx/

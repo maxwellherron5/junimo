@@ -227,7 +227,7 @@ async fn serve_index() -> poem::Result<poem::Response> {
 
 #[handler]
 async fn serve_css() -> poem::Result<poem::Response> {
-    let css_content = include_str!("../../../src-ui/styles/main.css");
+    let css_content = include_str!("../../src-ui/styles/main.css");
     Ok(poem::Response::builder()
         .header("content-type", "text/css")
         .body(css_content))
@@ -235,7 +235,7 @@ async fn serve_css() -> poem::Result<poem::Response> {
 
 #[handler]
 async fn serve_js() -> poem::Result<poem::Response> {
-    let js_content = include_str!("../../../src-ui/scripts/web-api.js");
+    let js_content = include_str!("../../src-ui/scripts/web-api.js");
     Ok(poem::Response::builder()
         .header("content-type", "application/javascript")
         .body(js_content))
@@ -243,7 +243,7 @@ async fn serve_js() -> poem::Result<poem::Response> {
 
 #[handler]
 async fn serve_main_js() -> poem::Result<poem::Response> {
-    let js_content = include_str!("../../../src-ui/scripts/main.js");
+    let js_content = include_str!("../../src-ui/scripts/main.js");
     Ok(poem::Response::builder()
         .header("content-type", "application/javascript")
         .body(js_content))
@@ -251,7 +251,7 @@ async fn serve_main_js() -> poem::Result<poem::Response> {
 
 #[handler]
 async fn serve_junimo_icon() -> poem::Result<poem::Response> {
-    let icon_bytes = include_bytes!("../../../src-ui/assets/junimo.png");
+    let icon_bytes = include_bytes!("../../src-ui/assets/junimo.png");
     Ok(poem::Response::builder()
         .header("content-type", "image/png")
         .header("cache-control", "public, max-age=31536000") // Cache for 1 year
