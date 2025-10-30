@@ -4,25 +4,25 @@ A comprehensive Stardew Valley companion web app that helps players manage items
 
 ## Features
 
-### 🎯 **Core Features**
+### **Core Features**
 - **Item Database**: Browse and search 139+ Stardew Valley items with detailed information
 - **Bundle Tracking**: View all Community Center bundles and track completion progress
 - **Villager Guide**: Complete gift preferences for all 30 villagers
 - **Progress Management**: Personal progress tracking stored locally in your browser
 
-### 📊 **Enhanced Item Information**
+### **Enhanced Item Information**
 - **Seasonal Availability**: Know when crops, fish, and foragables are available
 - **Proper Nutrition**: Energy and health values only for consumable items
 - **Location Data**: Where to find fish (River, Ocean, Mines)
 - **Smart Filtering**: Filter items by season (Spring, Summer, Fall, Winter)
 
-### 👥 **Complete Villager System**
+### **Complete Villager System**
 - **All 30 Villagers**: Marriageable and non-marriageable characters
 - **Gift Preferences**: Loved 💖, Liked 👍, Disliked 👎, Hated 💔 items
 - **Personal Details**: Birthdays, locations, and character descriptions
 - **461+ Gift Preferences**: Comprehensive database for perfect gift-giving
 
-### 🎮 **User Experience**
+### **User Experience**
 - **Local Progress**: Your progress is private and stored in your browser
 - **Responsive Design**: Works perfectly on desktop and mobile
 - **Fast Performance**: Rust backend with efficient SQLite database
@@ -58,18 +58,18 @@ Visit http://localhost:3000
 
 ## Usage
 
-### 📦 Bundle Tracking
+### Bundle Tracking
 - Navigate to the "Bundles" tab to see all Community Center bundles
 - Check off items as you collect them (progress saved locally)
 - View completion statistics in the "Progress" tab
 
-### 🔍 Item Search & Filtering
+### Item Search & Filtering
 - Browse all items in the "Items" tab
 - Search for specific items using the search bar
 - Filter by season to see what's available when
 - View detailed information including seasons, locations, and nutrition
 
-### 💝 Villager Gifts
+### Villager Gifts
 - Check the "Villagers" tab for complete gift guides
 - See loved, liked, disliked, and hated items for each villager
 - Plan perfect gifts for birthdays and friendship building
