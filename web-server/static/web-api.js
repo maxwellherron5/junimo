@@ -1,10 +1,5 @@
-/**
- * Simple Web API client for Junimo standalone server
- */
-
 class WebAPI {
     constructor() {
-        this.isAvailable = true;
         this.baseUrl = '/api';
     }
 
@@ -63,6 +58,4 @@ class WebAPI {
     }
 }
 
-// Create global API instance
-window.tauriAPI = new WebAPI();
-console.log('🌐 Web API initialized');
+window.api = new WebAPI();
