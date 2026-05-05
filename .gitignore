@@ -138,3 +138,6 @@ ehthumbs.db
 # SQLx offline data
 .sqlx/
 **/.sqlx/
+
+# Kiro IDE
+.kiro/
