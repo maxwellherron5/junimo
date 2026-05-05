@@ -39,14 +39,6 @@ pub struct BundleItem {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, sqlx::FromRow)]
-pub struct UserProgress {
-    pub id: i32,
-    pub bundle_item_id: i32,
-    pub completed: bool,
-    pub completed_at: Option<chrono::DateTime<chrono::Utc>>,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize, sqlx::FromRow)]
 pub struct Villager {
     pub id: i32,
     pub name: String,
@@ -89,26 +81,12 @@ impl<T> ApiResponse<T> {
     }
 }
 
-// Request types
-#[derive(Deserialize)]
-struct ProgressRequest {
-    #[serde(rename = "bundleItemId")]
-    bundle_item_id: i32,
-}
-
 type Db = Arc<Pool<Sqlite>>;
 
-// Database connection
 async fn init_db() -> Result<Pool<Sqlite>> {
     let database_url = std::env::var("DATABASE_URL")
         .unwrap_or_else(|_| "sqlite:junimo.db".to_string());
-    
-    let pool = SqlitePool::connect(&database_url).await?;
-    
-    // Run migrations
-    sqlx::migrate!("../migrations").run(&pool).await?;
-    
-    Ok(pool)
+    Ok(SqlitePool::connect(&database_url).await?)
 }
 
 // API Handlers
@@ -163,41 +141,6 @@ async fn get_bundle_items(bundle_id: i32, db: Db) -> Result<warp::reply::Json, I
     }
 }
 
-async fn get_progress(db: Db) -> Result<warp::reply::Json, Infallible> {
-    match sqlx::query_as::<_, UserProgress>("SELECT * FROM user_progress")
-        .fetch_all(db.as_ref())
-        .await
-    {
-        Ok(progress) => Ok(warp::reply::json(&ApiResponse::success(progress))),
-        Err(e) => Ok(warp::reply::json(&ApiResponse::<Vec<UserProgress>>::error(e.to_string()))),
-    }
-}
-
-async fn mark_completed(req: ProgressRequest, db: Db) -> Result<warp::reply::Json, Infallible> {
-    match sqlx::query(
-        "INSERT OR REPLACE INTO user_progress (bundle_item_id, completed, completed_at) VALUES (?, true, ?)"
-    )
-    .bind(req.bundle_item_id)
-    .bind(chrono::Utc::now())
-    .execute(db.as_ref())
-    .await
-    {
-        Ok(_) => Ok(warp::reply::json(&ApiResponse::success(()))),
-        Err(e) => Ok(warp::reply::json(&ApiResponse::<()>::error(e.to_string()))),
-    }
-}
-
-async fn mark_incomplete(req: ProgressRequest, db: Db) -> Result<warp::reply::Json, Infallible> {
-    match sqlx::query("DELETE FROM user_progress WHERE bundle_item_id = ?")
-        .bind(req.bundle_item_id)
-        .execute(db.as_ref())
-        .await
-    {
-        Ok(_) => Ok(warp::reply::json(&ApiResponse::success(()))),
-        Err(e) => Ok(warp::reply::json(&ApiResponse::<()>::error(e.to_string()))),
-    }
-}
-
 async fn get_villagers(db: Db) -> Result<warp::reply::Json, Infallible> {
     match sqlx::query_as::<_, Villager>("SELECT * FROM villagers ORDER BY name")
         .fetch_all(db.as_ref())
@@ -244,13 +187,6 @@ async fn main() -> Result<()> {
     // Static files
     let index = warp::path::end()
         .map(|| warp::reply::html(include_str!("../static/index.html")));
-    
-    let css = warp::path("main.css")
-        .map(|| warp::reply::with_header(
-            include_str!("../static/main.css"),
-            "content-type",
-            "text/css"
-        ));
     
     let js = warp::path("main.js")
         .map(|| warp::reply::with_header(
@@ -308,29 +244,6 @@ async fn main() -> Result<()> {
         .and(with_db(db.clone()))
         .and_then(get_bundle_items);
     
-    let progress = warp::path("api")
-        .and(warp::path("progress"))
-        .and(warp::path::end())
-        .and(warp::get())
-        .and(with_db(db.clone()))
-        .and_then(get_progress);
-    
-    let complete = warp::path("api")
-        .and(warp::path("progress"))
-        .and(warp::path("complete"))
-        .and(warp::post())
-        .and(warp::body::json())
-        .and(with_db(db.clone()))
-        .and_then(mark_completed);
-    
-    let incomplete = warp::path("api")
-        .and(warp::path("progress"))
-        .and(warp::path("incomplete"))
-        .and(warp::post())
-        .and(warp::body::json())
-        .and(with_db(db.clone()))
-        .and_then(mark_incomplete);
-    
     let villagers = warp::path("api")
         .and(warp::path("villagers"))
         .and(warp::path::end())
@@ -353,7 +266,6 @@ async fn main() -> Result<()> {
         .allow_methods(vec!["GET", "POST"]);
     
     let routes = index
-        .or(css)
         .or(js)
         .or(web_api_js)
         .or(junimo_icon)
@@ -361,9 +273,6 @@ async fn main() -> Result<()> {
         .or(search)
         .or(bundles)
         .or(bundle_items)
-        .or(progress)
-        .or(complete)
-        .or(incomplete)
         .or(villagers)
         .or(villager_gifts)
         .with(cors);

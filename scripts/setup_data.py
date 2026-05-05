@@ -128,12 +128,13 @@ class JunimoDataSetup:
             # Insert bundle items
             for item in bundle.get('items', []):
                 cursor.execute('''
-                    INSERT INTO bundle_items (bundle_id, item_id, quantity)
-                    VALUES (?, ?, ?)
+                    INSERT INTO bundle_items (bundle_id, item_id, quantity, quality)
+                    VALUES (?, ?, ?, ?)
                 ''', (
                     bundle['id'],
                     item['item_id'],
-                    item['quantity']
+                    item['quantity'],
+                    item.get('quality')
                 ))
                 item_count += 1
         

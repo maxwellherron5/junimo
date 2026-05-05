@@ -54,24 +54,6 @@ class WebAPI {
         return await this.request(`/bundles/${bundleId}/items`);
     }
 
-    async markItemCompleted(bundleItemId) {
-        return await this.request('/progress/complete', {
-            method: 'POST',
-            body: JSON.stringify({ bundleItemId }),
-        });
-    }
-
-    async markItemIncomplete(bundleItemId) {
-        return await this.request('/progress/incomplete', {
-            method: 'POST',
-            body: JSON.stringify({ bundleItemId }),
-        });
-    }
-
-    async getProgress() {
-        return await this.request('/progress');
-    }
-
     async getVillagers() {
         return await this.request('/villagers');
     }
