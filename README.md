@@ -5,7 +5,7 @@ A comprehensive Stardew Valley companion web app that helps players manage items
 ## Features
 
 ### **Core Features**
-- **Item Database**: Browse and search 139+ Stardew Valley items with detailed information
+- **Item Database**: Browse and search 108 Stardew Valley items with detailed information
 - **Bundle Tracking**: View all Community Center bundles and track completion progress
 - **Villager Guide**: Complete gift preferences for all 30 villagers
 - **Progress Management**: Personal progress tracking stored locally in your browser
@@ -92,7 +92,7 @@ junimo/
 
 ## Data Overview
 
-### Items (139 total)
+### Items (108 total)
 - **Consumables**: Proper energy/health values for crops, fish, cooked items
 - **Non-consumables**: No energy/health for minerals, artifacts, etc.
 - **Seasonal Items**: Spring/Summer/Fall/Winter availability
