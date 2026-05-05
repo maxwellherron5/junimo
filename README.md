@@ -1,6 +1,6 @@
 # Junimo 🍄
 
-A comprehensive Stardew Valley companion web app that helps players manage items, track Community Center bundles, and plan villager gifts. Built with Rust backend and modern web frontend.
+A Stardew Valley companion web app that helps players browse items, track Community Center bundles, and plan villager gifts. Pure static site — no backend, no accounts, progress saved in your browser.
 
 ## Features
 
@@ -24,37 +24,26 @@ A comprehensive Stardew Valley companion web app that helps players manage items
 
 ### **User Experience**
 - **Local Progress**: Your progress is private and stored in your browser
-- **Responsive Design**: Works perfectly on desktop and mobile
-- **Fast Performance**: Rust backend with efficient SQLite database
+- **Responsive Design**: Works on desktop and mobile
 - **No Account Required**: Start using immediately
 
-## Quick Start
+## Run locally
 
-### Prerequisites
-- [Rust](https://rustup.rs/) (latest stable)
-- Python 3.6+ (for data setup)
+The site is fully static — any HTTP server pointed at `docs/` works. Easiest:
 
-### Setup
-
-1. **Clone the repository:**
 ```bash
-git clone https://github.com/yourusername/junimo.git
-cd junimo
+cd docs
+python3 -m http.server 8000
 ```
 
-2. **Set up the database:**
-```bash
-python scripts/setup_data.py
-```
+Then visit http://localhost:8000.
 
-3. **Run the web server:**
-```bash
-cd web-server
-cargo run
-```
+## Deploy to GitHub Pages
 
-4. **Open your browser:**
-Visit http://localhost:3000
+1. Push to GitHub.
+2. In the repo, **Settings → Pages**.
+3. **Source**: Deploy from a branch. **Branch**: `main` / `/docs`.
+4. Save. Your site will be live at `https://<username>.github.io/<repo>/` in about a minute.
 
 ## Usage
 
@@ -79,15 +68,15 @@ Visit http://localhost:3000
 
 ```
 junimo/
-├── web-server/         # Rust web server
-│   ├── src/           # Rust source code
-│   └── static/        # Frontend assets (HTML, CSS, JS)
-├── data/              # Game data (JSON files)
-│   ├── items.json     # All items with enhanced data
-│   ├── bundles.json   # Community Center bundles
-│   └── villagers.json # Villagers and gift preferences
-├── migrations/        # Database schema migrations
-└── scripts/           # Data setup script
+└── docs/                  # Static site (GitHub Pages source)
+    ├── index.html         # Single-page app
+    ├── main.js            # UI rendering and interaction
+    ├── web-api.js         # Data layer (loads JSON, does search/filter in memory)
+    ├── assets/            # Images
+    └── data/              # Game data
+        ├── items.json
+        ├── bundles.json
+        └── villagers.json
 ```
 
 ## Data Overview
@@ -108,29 +97,9 @@ junimo/
 - **Townspeople**: All other NPCs with gift preferences
 - **Complete Data**: Birthdays, locations, descriptions, gift preferences
 
-## Development
+## Updating Data
 
-### Running in Development
-```bash
-# Terminal 1: Start the web server
-cd web-server
-cargo run
-
-# Terminal 2: For live development, use cargo watch
-cargo install cargo-watch
-cargo watch -x run
-```
-
-### Updating Data
-If you need to update game data:
-1. Edit JSON files in `data/` directory
-2. Run the setup script: `python scripts/setup_data.py`
-3. Restart the web server
-
-### Database
-- **Engine**: SQLite for simplicity and portability
-- **Location**: `web-server/junimo.db`
-- **Schema**: Items, bundles, villagers, and relationships
+Edit the JSON files in `docs/data/` and refresh — that's the whole loop. No build step, no database, no migrations.
 
 ## Contributing
 
@@ -150,8 +119,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Stardew Valley** by ConcernedApe - The amazing game this app supports
 - **Stardew Valley Wiki** - Source of accurate game data
-- **Rust Community** - For the excellent ecosystem and tools
-- **Open Source Community** - For inspiration and best practices
 
 ---
 
